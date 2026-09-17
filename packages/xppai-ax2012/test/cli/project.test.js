@@ -50,6 +50,18 @@ test('project init rejects a missing metadata flag without creating a root', () 
   assert.equal(fs.existsSync(root), false);
 });
 
+test('project init rejects marker-breaking metadata without creating a root', () => {
+  const root = path.join(createTemporaryRoot(), 'InvoiceSettlement');
+  const args = initializationArgs(root);
+  args[args.indexOf('FGL')] = 'FGL Team';
+
+  const result = runCli(args);
+
+  assert.notEqual(result.status, 0);
+  assert.match(result.stderr, /companyTag/i);
+  assert.equal(fs.existsSync(root), false);
+});
+
 test('project document creates one requested stage from an existing configuration', () => {
   const root = path.join(createTemporaryRoot(), 'InvoiceSettlement');
   const initialized = runCli(initializationArgs(root));

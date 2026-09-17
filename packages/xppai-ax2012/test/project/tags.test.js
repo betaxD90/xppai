@@ -62,3 +62,13 @@ test('classifyTaggedRange stops on mismatched or overlapping markers', () => {
 test('classifyTaggedRange reports untagged source', () => {
   assert.equal(classifyTaggedRange('amount = 10;', config), 'untagged');
 });
+
+test('classifyTaggedRange stops on noncanonical marker spacing', () => {
+  const source = [
+    '//<FGL  workitem="InvoiceSettlement" date="16/09/2026" user="t_robertaoliveira">',
+    'amount = 10;',
+    '//</FGL  workitem="InvoiceSettlement" date="16/09/2026" user="t_robertaoliveira">',
+  ].join('\n');
+
+  assert.equal(classifyTaggedRange(source, config), 'ambiguous');
+});

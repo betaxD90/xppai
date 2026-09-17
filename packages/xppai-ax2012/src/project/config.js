@@ -14,6 +14,15 @@ function validateProjectConfig(value) {
     }
   }
 
+  if (!/^[A-Za-z][A-Za-z0-9_-]*$/.test(value.companyTag.trim())) {
+    throw new Error('project configuration requires a marker-safe companyTag');
+  }
+  for (const key of ['projectName', 'developerName']) {
+    if (/["<>\r\n]/.test(value[key])) {
+      throw new Error(`project configuration requires a marker-safe ${key}`);
+    }
+  }
+
   return Object.freeze({
     schemaVersion: CONFIG_SCHEMA_VERSION,
     companyTag: value.companyTag.trim(),
@@ -38,6 +47,7 @@ function readProjectConfig(root) {
 
 function initializeProject({ root, config, createRoot }) {
   const resolvedRoot = path.resolve(String(root));
+  const validated = validateProjectConfig(config);
   if (fs.existsSync(resolvedRoot)) {
     if (!fs.statSync(resolvedRoot).isDirectory()) throw new Error('project root must be a directory');
   } else if (createRoot) {
@@ -49,7 +59,6 @@ function initializeProject({ root, config, createRoot }) {
   const configPath = configPathFor(resolvedRoot);
   if (fs.existsSync(configPath)) throw new Error(`project configuration already exists at ${configPath}`);
 
-  const validated = validateProjectConfig(config);
   fs.writeFileSync(configPath, `${JSON.stringify(validated, null, 2)}\n`, 'utf8');
   return { root: resolvedRoot, configPath, config: validated };
 }
@@ -58,13 +67,17 @@ function findProjectConfig(startPath) {
   let cursor = path.resolve(String(startPath));
   if (fs.existsSync(cursor) && !fs.statSync(cursor).isDirectory()) cursor = path.dirname(cursor);
 
+  const workspaces = [];
   while (true) {
     const configPath = configPathFor(cursor);
-    if (fs.existsSync(configPath)) return { root: cursor, configPath, config: readProjectConfig(cursor) };
+    if (fs.existsSync(configPath)) workspaces.push({ root: cursor, configPath, config: readProjectConfig(cursor) });
     const parent = path.dirname(cursor);
-    if (parent === cursor) return null;
+    if (parent === cursor) break;
     cursor = parent;
   }
+
+  if (workspaces.length > 1) throw new Error('multiple project workspace configurations apply; select one root explicitly');
+  return workspaces[0] || null;
 }
 
 module.exports = {

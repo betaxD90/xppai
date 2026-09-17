@@ -34,6 +34,7 @@ For a new tag pair, use the configured company tag, project name, developer name
 ```
 
 Keep the opening marker, code, and closing marker at the same indentation level. Do not use backslashes in the markers.
+The marker syntax, attribute order, and single spaces shown above are canonical. Treat noncanonical spacing or formatting as ambiguous and stop rather than rewriting existing source.
 
 - A new class receives the pair only around `classDeclaration`.
 - A new table receives a pair around every newly created method.

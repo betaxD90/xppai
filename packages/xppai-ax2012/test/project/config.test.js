@@ -65,6 +65,12 @@ test('validateProjectConfig rejects blank project metadata', () => {
   }
 });
 
+test('validateProjectConfig rejects values that would break a documentation marker', () => {
+  assert.throws(() => validateProjectConfig({ ...validConfig(), companyTag: 'FGL Team' }), /companyTag/i);
+  assert.throws(() => validateProjectConfig({ ...validConfig(), projectName: 'Invoice"Settlement' }), /projectName/i);
+  assert.throws(() => validateProjectConfig({ ...validConfig(), developerName: 'roberta\noliveira' }), /developerName/i);
+});
+
 test('initializeProject rejects a file root without creating configuration', () => {
   const parent = createTemporaryRoot();
   const root = path.join(parent, 'not-a-directory');
@@ -89,4 +95,15 @@ test('findProjectConfig returns null when no parent is a workspace', () => {
   fs.mkdirSync(nested);
 
   assert.equal(findProjectConfig(nested), null);
+});
+
+test('findProjectConfig rejects nested workspace roots instead of silently selecting one', () => {
+  const root = createTemporaryRoot();
+  const child = path.join(root, 'child-workspace');
+  const nested = path.join(child, 'src');
+  fs.mkdirSync(nested, { recursive: true });
+  initializeProject({ root, createRoot: false, config: validConfig() });
+  initializeProject({ root: child, createRoot: false, config: { ...validConfig(), projectName: 'ChildProject' } });
+
+  assert.throws(() => findProjectConfig(nested), /multiple project workspace configurations/i);
 });

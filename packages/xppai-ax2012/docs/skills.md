@@ -11,9 +11,10 @@
 7. `xppai-ax2012-codefix`
 8. `xppai-ax2012-dev`
 9. `xppai-ax2012-ririchard`
-10. `xppai-ax2012-help`
+10. `xppai-ax2012-project`
+11. `xppai-ax2012-help`
 
-Direct specialists load core, run intake once for XPO, choose the minimum manifest references, remain within their intent, and recommend Papai when the boundary becomes mixed. `xppai-ax2012-ririchard` is a closed-catalog compliance specialist for explicit Ririchard or Frigelar reviews. Papai routes `explain`, `architect`, `risk`, `codefix`, `dev`, and `review_frigelar_compliance` with a default three-cycle investigation budget.
+Direct specialists load core, run intake once for XPO, choose the minimum manifest references, remain within their intent, and recommend Papai when the boundary becomes mixed. `xppai-ax2012-ririchard` is a closed-catalog compliance specialist for explicit Ririchard or Frigelar reviews. `xppai-ax2012-project` creates a small project workspace with on-demand documents and deterministic documentation-tag rules. Papai routes `explain`, `architect`, `risk`, `codefix`, `dev`, and `review_frigelar_compliance` with a default three-cycle investigation budget.
 
 ## Internal reference packs
 
@@ -26,6 +27,3 @@ Gated business: `business.ledger-posting`, `business.retail`, `business.regional
 Deferred business: `business.workflow-ssrs` (preliminary explanation, architecture inventory, and gap reporting only).
 
 References are routed by the canonical manifest and are not all loaded by default. From a source-tree skill directory it is `../../references/manifest.json`; from an installed or exported skill directory it is `../xppai-ax2012-references/manifest.json`. A missing file, failed gate, or unsupported capability produces an explicit gap instead of fallback guidance.
-# Project workspace
-
-- `xppai-ax2012-project`: creates and maintains a small local AX 2012 project workspace, on-demand project documents, and deterministic documentation-tag rules.
