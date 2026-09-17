@@ -26,3 +26,6 @@ Gated business: `business.ledger-posting`, `business.retail`, `business.regional
 Deferred business: `business.workflow-ssrs` (preliminary explanation, architecture inventory, and gap reporting only).
 
 References are routed by the canonical manifest and are not all loaded by default. From a source-tree skill directory it is `../../references/manifest.json`; from an installed or exported skill directory it is `../xppai-ax2012-references/manifest.json`. A missing file, failed gate, or unsupported capability produces an explicit gap instead of fallback guidance.
+# Project workspace
+
+- `xppai-ax2012-project`: creates and maintains a small local AX 2012 project workspace, on-demand project documents, and deterministic documentation-tag rules.

@@ -27,6 +27,7 @@ node bin/xppai-ax2012.js --help
 - `install --target <claude|codex|qwen|copilot> [--mode copy|symlink]` installs transactionally.
 - `export --target <claude|codex|qwen|copilot|generic> --out <path>` keeps all output below the requested path.
 - `xpo` provides `load`, `load-stdin`, `snapshot`, `list`, `read`, `grep`, and `export-modified`.
+- `project` creates a lightweight local AX 2012 workspace or one requested project document. The installed `xppai-ax2012-project` skill gathers the required project metadata conversationally and applies its tag policy during AX 2012 work.
 
 ## Evidence and cache
 
