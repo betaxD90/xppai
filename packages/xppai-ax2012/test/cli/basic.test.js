@@ -20,7 +20,7 @@ test('CLI help exposes the complete first-release command surface', () => {
 
   assert.equal(result.status, 0, result.stderr);
   assert.equal(result.stderr, '');
-  for (const command of ['list', 'path', 'install', 'export', 'xpo']) {
+  for (const command of ['list', 'path', 'install', 'export', 'xpo', 'project']) {
     assert.match(result.stdout, new RegExp(`\\b${command}\\b`));
   }
   for (const command of ['load', 'load-stdin', 'snapshot', 'list', 'read', 'grep', 'export-modified']) {
