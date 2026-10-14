@@ -2,7 +2,7 @@
 
 Research date: 2026-10-13 (America/Sao_Paulo).
 
-Review incorporated: 2026-10-14. The user approved the reviewed design direction. The written specification is maintained in [xppAI 365 design](superpowers/specs/2026-10-14-xppai-365-design.md).
+Review incorporated: 2026-10-14. The user approved the reviewed design direction. The written specification is maintained in [xppAI 365 design](../specs/2026-10-14-xppai-365-design.md).
 
 Status: technical research and product constraints; not an implemented package or an approved implementation plan. Microsoft documentation was consulted for this document. Documentation establishes platform behavior, not the customer's installed build or application metadata.
 

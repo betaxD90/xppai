@@ -15,7 +15,10 @@
     "scripts/"
   ],
   "scripts": {
-    "test": "node --test"
+    "test": "node --test",
+    "verify:artifact": "node scripts/verify-artifact.js",
+    "prepack": "npm test",
+    "prepublishOnly": "npm test && npm run verify:artifact"
   },
   "engines": {
     "node": ">=18"
