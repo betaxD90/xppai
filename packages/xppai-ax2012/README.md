@@ -1,20 +1,49 @@
 # xppai-ax2012
 
-An independent skill suite and command-line tool for **Microsoft Dynamics AX 2012 R3**. It helps an AI assistant inspect X++ and XPO evidence, explain behavior, assess change risk, and plan or review implementation work using AX 2012-specific guidance.
+**X++ guidance for Microsoft Dynamics AX 2012 R3.**
 
-This package has its own skills, CLI, XPO cache, install manifests, and development lifecycle. It can be installed side-by-side with xppai@1.0.24 without sharing assets or cache state. It does not provide AX 2009 or D365 implementation guidance; keep each product’s instructions and evidence separate.
+## Pick the right generation first
 
-## What it supports
+| Your system | Package and scope |
+| --- | --- |
+| **Microsoft Dynamics AX 2009** | [xppai](../../README.md): legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
+| **Microsoft Dynamics AX 2012 R3** | This package: AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
+| **Dynamics 365 Finance and Supply Chain Management (D365FO)** | [xppai-365](../xppai-365/README.md): D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
 
-- **Explain** X++ code and AX 2012 objects using the evidence provided.
-- **Investigate** mixed or complex requests through `xppai-ax2012-papai`, which routes to explain, architecture, risk, code-fix, or development guidance.
-- **Review and plan** AX 2012 changes with focused architecture, risk, code-fix, and development skills.
-- **Inspect XPO files** with a byte-preserving parser and a local, append-only revision cache. Load a file or pasted content, authorize a snapshot, query objects, and compare explicitly selected revisions.
-- **Set up project notes** with a small local workspace and optional stage documents.
+Each package has its own skills, CLI, and installation. This one has its own XPO cache and install manifests too. Keep the evidence and guidance tied to the version you actually use.
 
-The package applies evidence labels such as `Confirmed`, `Likely`, `Hypothesis`, and `Unknown`. Parsed source or XPO can support static analysis, but it does not prove what is effective in a running AX environment. Layer and model state, xRef, subscribers, build and hotfix level, deployment, company, identity, and execution path remain unknown unless the supplied evidence establishes them. Import, compile, CIL generation, deployment, database synchronization, and runtime behavior must be verified in the relevant AX environment.
+## What this AX 2012 package does
 
-Reference coverage is intentionally bounded: supported, gated, and deferred domains are listed in the [skills and references guide](docs/skills.md). A missing reference or unmet gate should produce an explicit evidence gap rather than borrowed guidance from another AX version.
+Bring an R3 method, class, XPO, error, or change request. The assistant can explain the behavior shown by that evidence, examine design and regression risks, and help shape a fix or new artifact. If the work needs a paper trail, the project workflow creates local notes and documents on request.
+
+The CLI handles the mechanical XPO work: load source, take a snapshot, find or read objects, and compare selected revisions. That makes it easier to point the assistant at the right evidence.
+
+## Meet `xppai-ax2012-papai`
+
+**Papai leads the AX 2012 investigation.** Give it a mixed or unclear R3 request, plus the X++ or XPO you have. It establishes the AX 2012 baseline, reads XPO evidence once when present, selects only the relevant reference material, and brings in the smallest useful sequence of `explain`, `architect`, `risk`, `codefix`, or `dev`. Then it checks what those findings really support and gives you one useful answer.
+
+Its superpower is keeping a many-part problem together without sending every question through every skill. It knows when a domain needs more evidence and when the honest answer is `Unknown`. You can use a specialist directly for a clear, narrow task; Papai is the first stop when several kinds of work meet. `xppai-ax2012-project` handles local project notes when you need them.
+
+> **Try it:** “Use `xppai-ax2012-papai` to review this R3 XPO change. Explain the behavior, identify the change risk, and tell me what must be checked in AX before deployment.”
+
+## The AX 2012 crew
+
+| Skill | What it does |
+| --- | --- |
+| `xppai-ax2012-papai` | Orchestrates mixed R3 work and synthesizes the specialist findings. |
+| `xppai-ax2012-explain` | Explains existing X++ objects and behavior from the supplied evidence. |
+| `xppai-ax2012-architect` | Reviews or designs boundaries and interactions. |
+| `xppai-ax2012-risk` | Assesses change, regression, and deployment risk. |
+| `xppai-ax2012-codefix` | Corrects defective existing behavior. |
+| `xppai-ax2012-dev` | Designs new behavior or AX artifacts from requirements. |
+| `xppai-ax2012-project` | Creates local project notes and applies the documentation tag policy. |
+| `xppai-ax2012-core` | Supplies the shared R3 baseline and evidence rules. |
+| `xppai-ax2012-intake` | Organizes supplied evidence and handles XPO intake once. |
+| `xppai-ax2012-help` | Explains the catalog, references, and routing. |
+
+The CLI uses a byte-preserving parser and local, append-only revision cache. The [skills and references guide](docs/skills.md) explains which domains are supported, gated, or deferred. A missing reference or unmet gate means an explicit evidence gap.
+
+Parsed source or XPO supports static analysis, not proof of what runs in AX. Layer/model state, xRef, subscribers, build and hotfix level, deployment, company, identity, and execution path remain unknown unless evidence establishes them. Import, compile, CIL generation, database synchronization, deployment, and runtime behavior need confirmation in the target AX environment.
 
 ## Install and start
 

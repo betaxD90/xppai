@@ -1,31 +1,54 @@
 # XppAI
 
-**Practical, evidence-aware X++ assistance for three distinct Microsoft Dynamics generations.**
+**Three X++ generations, each with its own toolkit.**
 
-XppAI is a family of independent assistant skill suites. Choose the package that matches the system you are working on; each has its own scope, CLI, assets, and installation lifecycle.
+## Pick the right generation first
 
-## Choose your product
+| Your system | Package and scope |
+| --- | --- |
+| **Microsoft Dynamics AX 2009** | This root package: legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
+| **Microsoft Dynamics AX 2012 R3** | [xppai-ax2012](packages/xppai-ax2012/README.md): AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
+| **Dynamics 365 Finance and Supply Chain Management (D365FO)** | [xppai-365](packages/xppai-365/README.md): D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
 
-| Product | Use it for | What it provides |
-|---|---|---|
-| **AX 2009** — this package | Microsoft Dynamics AX 2009 and its X++ codebase | Analysis and review skills, posting and performance guidance, risk assessment, and XPO inspection utilities. |
-| **AX 2012 R3** | Microsoft Dynamics AX 2012 R3 | A separate suite for evidence-driven analysis, development guidance, project workflows, and XPO tooling. |
-| **Dynamics 365 Finance & Operations (D365FO)** | Current Finance and Supply Chain Management X++ work | A separate suite for explaining, reviewing, and proposing X++ changes from supplied code, metadata, diffs, requirements, and diagnostics. |
+Each package has its own skills, CLI, and installation. Pick the version of the system you are actually working on; a familiar X++ name does not make guidance from another generation safe to reuse.
 
-These products are installed and used independently. The root `xppai` CLI and its AX 2009 assets do not provide the AX 2012 or D365FO skill catalogs. See the dedicated guides for [AX 2012 R3](packages/xppai-ax2012/README.md) and [D365FO](packages/xppai-365/README.md).
+## What each version actually does
 
-## AX 2009: what it does
+- **AX 2009** helps untangle older X++ systems: explain an unfamiliar object, trace a posting or support problem, read a profiler result, review a proposed fix, or inspect an XPO. This is the package documented below.
+- **AX 2012 R3** works with R3 X++ and XPO evidence to explain existing behavior, plan or review changes, assess risk, and organize local project notes. Its separate CLI can load and compare XPO revisions. [Read the AX 2012 guide](packages/xppai-ax2012/README.md).
+- **D365FO** works from readable X++, metadata, diffs, errors, traces, and requirements. It helps explain current code, choose an extension approach, assess risk, and draft a fix or new behavior. [Read the D365FO guide](packages/xppai-365/README.md).
 
-This repository-root package is the AX 2009 product. Its skills help an AI assistant reason about legacy X++ with explicit evidence, conservative change boundaries, and production-aware context. Use them to:
+Each guide explains what evidence its version needs and what must still be checked in the target environment.
 
-- explain unfamiliar classes, methods, forms, and tables;
-- triage mixed or unclear issues, or follow a predictable analysis flow;
-- review architecture and assess change risk before implementation;
-- investigate profiler and stack traces, posting behavior, and business-error symptoms;
-- propose focused, behavior-preserving fixes; and
-- read XPO input for analysis or use the CLI to inventory and query cached XPO objects.
+## Meet `xppai-papai`
 
-Start with `xppai-papai` for mixed or ambiguous work, or `xppai-babysit` for a structured, repeatable flow. Use focused skills such as `xppai-stack`, `xppai-posting`, `xppai-support`, `xppai-risk`, or `xppai-codefix` once the problem is scoped. The suite provides instructions to an AI assistant; it does not run AX, compile X++, connect to an AX environment, or prove that proposed changes work in a live system.
+For AX 2009, **Papai is the lead**. Hand it a method, class, form, XPO, stack trace, posting puzzle, or support symptom and tell it what you need. It works out what matters, picks the smallest useful sequence of specialist skills, checks the evidence, and turns the findings into a practical answer. It can move from a vague business symptom to `xppai-support`, then to `xppai-posting` or `xppai-explain` when the code arrives, without making you guess the route up front.
+
+That is why Papai is the one to call when the request is messy: it **connects the specialists and judges when to stop**. It is not a magic AX connection. The assistant still needs the relevant code or evidence, and only the AX environment can confirm compile and runtime behavior. For a narrow question, you can call a specialist directly. For a fixed, repeatable analysis of an artifact, `xppai-babysit` is also available.
+
+> **Try it:** “Use `xppai-papai` to investigate this AX 2009 posting error. Here is the message and the relevant X++ method; explain the likely cause and the next check.”
+
+## The AX 2009 crew
+
+| Skill | What it does |
+| --- | --- |
+| `xppai-papai` | Leads mixed or unclear work and combines the right specialist findings. |
+| `xppai-babysit` | Runs a predefined, structured analysis based on the artifact type. |
+| `xppai-explain` | Explains unfamiliar methods, classes, forms, and tables. |
+| `xppai-support` | Investigates business or support symptoms before the code path is known. |
+| `xppai-stack` | Reads stack and profiler traces to investigate performance. |
+| `xppai-posting` | Follows FormLetter posting flows, sequencing, and side effects. |
+| `xppai-architect` | Reviews responsibilities, coupling, and design boundaries. |
+| `xppai-risk` | Assesses the impact of a proposed change. |
+| `xppai-codefix` | Proposes a focused fix once the defect and context are understood. |
+| `xppai-exportxpo` | Prepares a ready-to-paste X++ job to export selected AOT objects. |
+| `xppai-core` | Supplies AX 2009 rules and evidence labels used throughout the suite. |
+| `xppai-domain` | Adds deeper posting, performance, and architecture knowledge. |
+| `xppai-intake` | Reads XPO evidence once when an XPO is supplied. |
+| `xppai-help` | Lists the skills and helps you choose one. |
+| `xppai-init` | Legacy compatibility entry; use `core`, `domain`, and `intake` as applicable. |
+
+The [skills guide](docs/skills.md) has more detailed routing examples. The suite guides an AI assistant; it does not run AX, compile X++, or prove a proposed change in production.
 
 ## Install and get started
 

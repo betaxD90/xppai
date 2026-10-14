@@ -1,23 +1,44 @@
 # xppAI 365
 
-**Evidence-driven X++ assistance for Dynamics 365 Finance and Supply Chain Management (D365FO).**
+**X++ guidance for Dynamics 365 Finance and Supply Chain Management.**
 
-xppAI 365 gives your AI assistant focused guidance for understanding and changing D365FO code. Provide the relevant X++, metadata, diff, error, trace, or requirements; the assistant uses the supplied evidence to explain behavior, assess a change, correct a defect, or draft new behavior.
+## Pick the right generation first
 
-This package is dedicated to D365FO. AX 2009 and AX 2012 have separate packages, skills, and command namespaces. They are not interchangeable: AX 2009 and AX 2012 material is migration evidence only when you explicitly ask for a migration analysis.
-
-## Workflows
-
-| Need | Start with |
+| Your system | Package and scope |
 | --- | --- |
-| Understand existing code or metadata | `xppai-365-explain` |
-| Choose an extension point or shape a design | `xppai-365-architect` |
-| Review the risks in a proposed change | `xppai-365-risk` |
-| Fix a defect in supplied code | `xppai-365-codefix` |
-| Implement new behavior from requirements | `xppai-365-dev` |
-| Route a request that combines several kinds of work | `xppai-365-papai` |
+| **Microsoft Dynamics AX 2009** | [xppai](../../README.md): legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
+| **Microsoft Dynamics AX 2012 R3** | [xppai-ax2012](../xppai-ax2012/README.md): AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
+| **Dynamics 365 Finance and Supply Chain Management (D365FO)** | This package: D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
 
-The package also includes `xppai-365-core` for shared evidence and output rules, `xppai-365-intake` for organizing supplied material, and `xppai-365-help` for usage guidance. Its seven platform references cover Visual Studio and metadata, extensibility, X++ transactions, data and integration, batch, security, and validation.
+Each package has its own skills, CLI, and installation. AX 2009 or AX 2012 material can help with an explicitly requested migration analysis; it does not establish current D365FO behavior on its own.
+
+## What this D365FO package does
+
+Bring readable X++, metadata XML, a diff, a diagnostic, or a requirement. The assistant can explain what the supplied code shows, help choose an extension point, assess a proposed change, correct a defect, or draft new behavior. It can return an explanation, a focused diff, a complete method or class when the evidence supports one, and the place to apply it in Visual Studio.
+
+## Meet `xppai-365-papai`
+
+**Papai leads when a D365FO request has several moving parts.** Give it the relevant X++, readable metadata, diff, error, trace, or requirements. It gets the shared rules and evidence in order, chooses only the relevant references, and routes the work through the smallest useful mix of `explain`, `architect`, `risk`, `codefix`, and `dev`. You get a coherent answer with the source locations and application point that matter.
+
+Why call Papai first? It can connect “what does this do?”, “where should the extension go?”, and “what could break?” in one pass, while stopping at the edge of the supplied evidence. For one clear task, you can call its specialist directly. Papai coordinates instructions inside your assistant; it does not launch another model or need a team of agents.
+
+> **Try it:** “Use `xppai-365-papai` to review this extension request. Here are the current method, metadata, and error. Explain the behavior, propose the change, and identify the risks.”
+
+## The D365FO crew
+
+| Skill | What it does |
+| --- | --- |
+| `xppai-365-papai` | Routes mixed work and combines the relevant specialist findings. |
+| `xppai-365-explain` | Explains existing X++ and readable metadata. |
+| `xppai-365-architect` | Chooses design and extension boundaries. |
+| `xppai-365-risk` | Assesses the impact of a concrete change. |
+| `xppai-365-codefix` | Corrects a defect in existing behavior. |
+| `xppai-365-dev` | Drafts new behavior from requirements. |
+| `xppai-365-core` | Supplies D365FO scope, evidence, and output rules. |
+| `xppai-365-intake` | Organizes the supplied material once. |
+| `xppai-365-help` | Explains the catalog and how to use it. |
+
+The reference packs cover Visual Studio and metadata, extensibility, X++ transactions, data and integration, batch, security, and validation. See [skills and evidence](docs/skills.md) for the input and output boundaries.
 
 ## Quick start
 
