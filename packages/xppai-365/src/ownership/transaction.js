@@ -158,7 +158,11 @@ function buildInstallPlan({ assetRoot, destinations, target, mode = 'copy', vers
 }
 
 function readPreviousManifest(plan) {
-  if (!fs.existsSync(plan.manifestPath)) return { manifest: null, bytes: null };
+  if (!existsEntry(plan.manifestPath)) return { manifest: null, bytes: null };
+  const stat = fs.lstatSync(plan.manifestPath);
+  if (stat.isSymbolicLink() || !stat.isFile()) {
+    throw new Error('previous ownership manifest must be a regular file');
+  }
   const bytes = fs.readFileSync(plan.manifestPath);
   let manifest;
   try {
@@ -176,7 +180,7 @@ function readPreviousManifest(plan) {
 }
 
 function comparablePath(value) {
-  return path.resolve(value).replace(/\\/g, '/').toLowerCase();
+  return path.resolve(value);
 }
 
 function validateInstalledEntry(entry, active) {

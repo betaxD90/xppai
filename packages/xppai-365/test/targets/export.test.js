@@ -4,6 +4,19 @@ const fs = require('node:fs');
 const path = require('node:path');
 const test = require('node:test');
 const { useTempDir } = require('../helpers/tmp');
+const { snapshotTree } = require('../helpers/hash-tree');
+for(const [target,relative] of [
+ ['claude','skills'],['claude','commands'],['codex','skills'],['qwen','skills'],
+ ['generic','skills'],['generic','commands'],['copilot','.github'],['copilot','.github/skills'],
+]) test(target+' export rejects redirected '+relative+' before writing',t=>{
+ const root=useTempDir(t), out=path.join(root,'out'), outside=path.join(root,'outside');
+ const redirected=path.join(out,relative);
+ fs.mkdirSync(path.dirname(redirected),{recursive:true}); fs.mkdirSync(outside);
+ fs.symlinkSync(outside,redirected,'junction');
+ const before=snapshotTree(root);
+ assert.throws(()=>require('../../src/commands/export')({'--target':target,'--out':out},[],{quiet:true}),/export.*symbolic link|export.*redirect/i);
+ assert.deepEqual(snapshotTree(root),before);
+});
 for (const target of ['claude','codex','qwen','copilot','generic']) for (const mode of ['copy','symlink']) {
  test(target+' '+mode+' export resolves all references under output',t => {
   const exportCommand = require('../../src/commands/export');

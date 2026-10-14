@@ -5,6 +5,39 @@ const path = require('node:path');
 const test = require('node:test');
 const { useTempDir } = require('../helpers/tmp');
 const { snapshotTree } = require('../helpers/hash-tree');
+test('dangling ownership manifest is rejected without replacing the link', t => {
+ const c=setup(t); fs.mkdirSync(c.dest);
+ fs.symlinkSync(path.join(c.root,'missing-manifest'),path.join(c.dest,'.xppai-365-owned.json'),'file');
+ const before=snapshotTree(c.root);
+ assert.throws(()=>c.apply(c.plan()),/ownership manifest.*regular file/i);
+ assert.deepEqual(snapshotTree(c.root),before);
+});
+test('case-distinct symlink retargeting blocks upgrade on case-sensitive filesystems', t => {
+ const c=setup(t,'symlink');
+ const alternate=path.join(c.root,'SOURCE');
+ if(fs.existsSync(alternate)) { t.skip('filesystem is case-insensitive'); return; }
+ fs.cpSync(c.source,alternate,{recursive:true}); c.apply(c.plan());
+ const installed=path.join(c.dest,'xppai-365-core'); fs.unlinkSync(installed);
+ fs.symlinkSync(path.join(alternate,'skills/xppai-365-core'),installed,'junction');
+ const before=snapshotTree(c.root);
+ assert.throws(()=>c.apply(c.plan()),/changed since/i);
+ assert.deepEqual(snapshotTree(c.root),before);
+});
+test('ownership comparison preserves case in canonical realpaths', t => {
+ const c=setup(t,'symlink'); c.apply(c.plan());
+ const installed=path.join(c.dest,'xppai-365-core');
+ const source=path.join(c.source,'skills/xppai-365-core');
+ const realpath=fs.realpathSync.native;
+ // Simulate the canonical paths returned by a case-sensitive filesystem.
+ t.mock.method(fs.realpathSync,'native',value=>{
+  if(value===installed) return path.join(c.root,'Source','core');
+  if(value===source) return path.join(c.root,'source','core');
+  return realpath(value);
+ });
+ const before=snapshotTree(c.dest);
+ assert.throws(()=>c.apply(c.plan()),/changed since/i);
+ assert.deepEqual(snapshotTree(c.dest),before);
+});
 function setup(t, mode='copy') {
  const {buildInstallPlan,applyInstallPlan}=require('../../src/ownership/transaction');
  const root=useTempDir(t), source=path.join(root,'source'), dest=path.join(root,'dest');
