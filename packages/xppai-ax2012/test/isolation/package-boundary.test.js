@@ -19,9 +19,12 @@ function walkFiles(root) {
 
 test('AX 2012 is an independent sibling package', () => {
   const pkg = require(path.join(PACKAGE_ROOT, 'package.json'));
+  const lock = require(path.join(PACKAGE_ROOT, 'package-lock.json'));
 
   assert.equal(pkg.name, 'xppai-ax2012');
-  assert.equal(pkg.version, '0.1.1');
+  assert.equal(pkg.version, '0.2.0');
+  assert.equal(lock.version, pkg.version);
+  assert.equal(lock.packages[''].version, pkg.version);
   assert.equal(pkg.type, 'commonjs');
   assert.equal(pkg.bin['xppai-ax2012'], 'bin/xppai-ax2012.js');
   assert.deepEqual(pkg.files, ['assets/', 'bin/', 'docs/', 'src/']);
@@ -62,7 +65,6 @@ test('AX 2012 exports only its versioned product identity and skill namespace', 
     'xppai-ax2012-risk',
     'xppai-ax2012-codefix',
     'xppai-ax2012-dev',
-    'xppai-ax2012-ririchard',
     'xppai-ax2012-project',
     'xppai-ax2012-help',
   ]);

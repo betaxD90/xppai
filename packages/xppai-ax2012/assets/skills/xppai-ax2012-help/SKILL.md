@@ -7,7 +7,7 @@ description: Catalog the Microsoft Dynamics AX 2012 R3 skills, references, CLI c
 
 Use this skill to select the right `xppai-ax2012` entry point without performing the requested technical work.
 
-## Eleven public skills
+## Ten public skills
 
 - `xppai-ax2012-core`: mandatory baseline and evidence rules.
 - `xppai-ax2012-intake`: one-time evidence and XPO intake.
@@ -17,7 +17,6 @@ Use this skill to select the right `xppai-ax2012` entry point without performing
 - `xppai-ax2012-risk`: score change, regression, and deployment risk.
 - `xppai-ax2012-codefix`: restore defective existing behavior.
 - `xppai-ax2012-dev`: create or expand behavior and artifacts.
-- `xppai-ax2012-ririchard`: review AX 2012 R3 XPOs only against the approved Ririchard/Frigelar compliance catalog.
 - `xppai-ax2012-project`: create or use a lightweight AX 2012 project workspace and its documentation-tag policy.
 - `xppai-ax2012-help`: show this catalog.
 

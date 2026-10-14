@@ -21,7 +21,6 @@ const PUBLIC_SKILLS = Object.freeze([
   'xppai-ax2012-risk',
   'xppai-ax2012-codefix',
   'xppai-ax2012-dev',
-  'xppai-ax2012-ririchard',
   'xppai-ax2012-project',
   'xppai-ax2012-help',
 ]);

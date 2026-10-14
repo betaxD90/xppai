@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "capture": {
-    "date": "2026-09-17",
+    "date": "2026-10-14",
     "gitRevision": "working-tree"
   },
   "package": {
@@ -9,9 +9,9 @@
     "version": "1.0.24",
     "testCount": 63,
     "entryCount": 64,
-    "packedSize": 25072,
-    "unpackedSize": 84477,
-    "shasum": "109092b2091ba19188a08b8c057dd0cf506ab1f3"
+    "packedSize": 25330,
+    "unpackedSize": 84866,
+    "shasum": "0bf64ac686b8102885cc23591f5dd2ac62249ed1"
   },
   "packageFiles": [
     "README.md",

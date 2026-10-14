@@ -1,122 +1,80 @@
 # XppAI
 
-**XppAI is an LLM-runtime-agnostic skill suite for X++ and Microsoft Dynamics AX 2009.**
+**Practical, evidence-aware X++ assistance for three distinct Microsoft Dynamics generations.**
 
-It packages a curated set of AX 2009 / X++ skills into an installable CLI, so you can bring structured, senior-style analysis to old-school ERP codebases without locking yourself into one specific AI runtime.
+XppAI is a family of independent assistant skill suites. Choose the package that matches the system you are working on; each has its own scope, CLI, assets, and installation lifecycle.
 
-Because yes: AX 2009 code still exists, it still runs businesses, and sometimes it needs more than "just ask the AI".
+## Choose your product
 
-XppAI helps LLM agents understand AX 2009 code with better context, safer assumptions, and more production-aware behavior.
+| Product | Use it for | What it provides |
+|---|---|---|
+| **AX 2009** — this package | Microsoft Dynamics AX 2009 and its X++ codebase | Analysis and review skills, posting and performance guidance, risk assessment, and XPO inspection utilities. |
+| **AX 2012 R3** | Microsoft Dynamics AX 2012 R3 | A separate suite for evidence-driven analysis, development guidance, project workflows, and XPO tooling. |
+| **Dynamics 365 Finance & Operations (D365FO)** | Current Finance and Supply Chain Management X++ work | A separate suite for explaining, reviewing, and proposing X++ changes from supplied code, metadata, diffs, requirements, and diagnostics. |
 
-## Author
+These products are installed and used independently. The root `xppai` CLI and its AX 2009 assets do not provide the AX 2012 or D365FO skill catalogs. See the dedicated guides for [AX 2012 R3](packages/xppai-ax2012/README.md) and [D365FO](packages/xppai-365/README.md).
 
-Created by **Roberta Freitas Oliveira** — **15+ years Microsoft ERP Specialist**  
-LinkedIn: [linkedin.com/in/rfreitas90](https://www.linkedin.com/in/rfreitas90/)
+## AX 2009: what it does
 
-## Why XppAI?
+This repository-root package is the AX 2009 product. Its skills help an AI assistant reason about legacy X++ with explicit evidence, conservative change boundaries, and production-aware context. Use them to:
 
-Modern AI tools are great at coding.
+- explain unfamiliar classes, methods, forms, and tables;
+- triage mixed or unclear issues, or follow a predictable analysis flow;
+- review architecture and assess change risk before implementation;
+- investigate profiler and stack traces, posting behavior, and business-error symptoms;
+- propose focused, behavior-preserving fixes; and
+- read XPO input for analysis or use the CLI to inventory and query cached XPO objects.
 
-AX 2009 is not modern.
+Start with `xppai-papai` for mixed or ambiguous work, or `xppai-babysit` for a structured, repeatable flow. Use focused skills such as `xppai-stack`, `xppai-posting`, `xppai-support`, `xppai-risk`, or `xppai-codefix` once the problem is scoped. The suite provides instructions to an AI assistant; it does not run AX, compile X++, connect to an AX environment, or prove that proposed changes work in a live system.
 
-X++ has its own patterns, traps, conventions, transaction behaviors, localization blocks, posting flows, and "do not touch this casually" zones.
-
-XppAI gives LLMs a better operating manual for this world.
-
-## What It Helps With
-
-- understanding unfamiliar X++ objects
-- analyzing profiler traces and stack traces
-- reviewing posting flows
-- spotting risky changes before they hurt production
-- proposing minimal, safe fixes
-- exporting skills for different AI runtimes
-- reading XPO files directly for analysis
-
-## Included Skills
-
-| Skill | Purpose |
-|---|---|
-| `xppai-papai` | **Main** dynamic senior orchestrator for mixed or complex artifacts |
-| `xppai-babysit` | **Main** structured static orchestrator for predictable, labeled analysis |
-| `xppai-init` | Shared AX 2009 foundation and guardrails |
-| `xppai-explain` | Explains unfamiliar methods, classes, forms, and tables |
-| `xppai-stack` | Analyzes profiler traces and stack traces |
-| `xppai-codefix` | Proposes minimal, safe, production-ready fixes |
-| `xppai-architect` | Reviews code for architectural weaknesses and design gaps |
-| `xppai-posting` | Analyzes FormLetter posting flows and transaction behavior |
-| `xppai-risk` | Assesses change risk before modifying code |
-| `xppai-help` | General helper and entry guidance |
-| `xppai-exportxpo` | Generates a ready-to-paste X++ job for exporting AOT objects to XPO files |
-
-## Quick Start
+## Install and get started
 
 ### Requirements
 
-- Node.js 18 or newer
+- Node.js 18 or newer.
+- A supported assistant runtime for installing the skills. The CLI also supports export for manual use.
 
-### Install
+### Install from a repository checkout
 
-```bash
-npm install -g xppai
-```
-
-Or from source:
+From the repository root:
 
 ```bash
 npm install -g .
-```
-
-### First Commands
-
-```bash
 xppai list
-xppai install --target all
-xppai xpo read --type Class --name MyClass --file <file>
-xppai xpo grep --contains "search-text" --file <file>
+xppai install --target codex
 ```
 
-Install one runtime at a time when needed:
+Choose `claude`, `qwen`, or `copilot` instead of `codex` to install to that target. `copilot` writes project skills under `.github/skills` in the current repository, so run that command from the project where you want the skills installed. To install all native targets, use `xppai install --target all`.
+
+To export the assets for manual use instead of installing them:
 
 ```bash
-xppai install --target codex
-xppai install --target claude
-xppai install --target qwen
-xppai install --target copilot
+xppai export --target generic --out ./out/skills
 ```
 
-## Supported Targets
+### Optional XPO command-line workflow
 
-### Native targets
+The CLI can load a local XPO into its cache and query its objects. For cache-based queries, take a snapshot before listing, reading, or searching:
 
-- `claude`
-- `codex`
-- `qwen`
-- `copilot`
+```bash
+xppai xpo load "./path/to/export.xpo"
+xppai xpo snapshot --json
+xppai xpo list --type Class
+xppai xpo read --type Class --name MyClass
+xppai xpo grep --contains "search text"
+```
 
-For `copilot`, install writes GitHub Copilot CLI project skills under `.github/skills` inside the current repository.
+For ordinary skill analysis, the cache workflow is optional: provide the XPO file to your assistant directly when the runtime can read local files, or paste its contents.
 
-### Export-only targets
+## AX 2009 documentation
 
-- `generic`
+- [Skills guide](docs/skills.md)
+- [CLI reference](docs/cli.md)
+- [XPO cache workflow](docs/xpo-cache.md)
+- [Targets and installation](docs/targets.md)
+- [Scope and constraints](docs/scope.md)
+- [Documentation index](docs/README.md)
 
-## Learn More
+## About
 
-- Documentation index: [docs/README.md](./docs/README.md)
-- Skills guide: [docs/skills.md](./docs/skills.md)
-- CLI and command behavior: [docs/cli.md](./docs/cli.md)
-- XPO CLI workflow and notes: [docs/xpo-cache.md](./docs/xpo-cache.md)
-- Targets and installation: [docs/targets.md](./docs/targets.md)
-- Scope and constraints: [docs/scope.md](./docs/scope.md)
-
-## Repository
-
-GitHub: [betaxD90/xppai](https://github.com/betaxD90/xppai)
-
-## Status
-
-XppAI is built for people who still need to reason about AX 2009 seriously.
-
-It will not make legacy ERP magically simple.
-
-But it can make your AI assistant less clueless before it touches the code.
+Created by **Roberta Freitas Oliveira**, Microsoft ERP specialist. [LinkedIn](https://www.linkedin.com/in/rfreitas90/)

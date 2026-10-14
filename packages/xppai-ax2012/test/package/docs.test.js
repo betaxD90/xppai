@@ -42,7 +42,7 @@ test('skills documentation lists all public skills and manifest references', () 
 
   for (const name of PUBLIC_SKILLS) assert.match(skills, new RegExp(`\\b${name}\\b`));
   for (const ref of manifest.references) assert.match(skills, new RegExp(ref.id.replace('.', '\\.')));
-  assert.equal(PUBLIC_SKILLS.length, 11);
+  assert.equal(PUBLIC_SKILLS.length, 10);
   assert.equal(manifest.references.length, 12);
 });
 
@@ -61,7 +61,7 @@ test('help skill and command expose the public catalog', () => {
   const command = read('assets/commands/xppai-ax2012-help.md');
 
   assert.match(help, /Microsoft Dynamics AX 2012 R3/);
-  assert.match(help, /eleven public skills/i);
+  assert.match(help, /ten public skills/i);
   assert.match(help, /twelve reference packs/i);
   assert.match(command, /xppai-ax2012-help/);
 });
