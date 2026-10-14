@@ -1,102 +1,45 @@
-# XppAI
+# xppAI
 
-**Three X++ generations, each with its own toolkit.**
+**X++ assistance across AX 2009, AX 2012 R3, and Dynamics 365 Finance and Supply Chain Management.**
 
-## Pick the right generation first
+xppAI gives an AI assistant version-specific guidance for working with Microsoft ERP code. You provide the relevant X++, XPO, readable metadata, diagnostics, or requirements; the assistant uses that evidence to help you understand the system and decide what to do next. The repository contains three independent packages, so each generation keeps its own rules and tools.
 
-| Your system | Package and scope |
+## What xppAI can help with
+
+- **Understand existing behavior:** explain X++ objects, methods, and the relationships visible in the supplied evidence.
+- **Investigate problems:** connect errors, support symptoms, posting flows, traces, or performance clues to the relevant code when the version supports that workflow.
+- **Plan a change:** review design boundaries, likely impact, and regression risks before editing.
+- **Work on code:** propose a focused fix or draft new behavior within the capabilities of the selected package.
+- **Handle version-specific evidence:** inspect XPOs in the AX 2009 and AX 2012 tools, or work from readable source and metadata in D365FO.
+
+Each package has a **Papai** skill for requests that mix several kinds of work. Papai chooses the useful specialists, combines their findings, and stops when the evidence runs out. You can also call a specialist directly for a focused question. xppAI guides an assistant; its CLI installs the guidance and handles supported local file workflows. It does not compile, deploy, or verify changes in a running ERP environment.
+
+## Choose your version
+
+| System | Best fit | Detailed guide |
+| --- | --- | --- |
+| **Microsoft Dynamics AX 2009** | Legacy X++ analysis, support and posting investigations, performance, risk, fixes, and XPO inspection. | [AX 2009 guide](docs/ax2009.md) |
+| **Microsoft Dynamics AX 2012 R3** | R3 X++ and XPO analysis, change guidance, project notes, and revision-aware XPO tooling. | [AX 2012 R3 guide](packages/xppai-ax2012/README.md) |
+| **Dynamics 365 Finance and Supply Chain Management (D365FO)** | X++ and readable metadata, diffs, diagnostics, extension design, fixes, and new behavior. | [D365FO guide](packages/xppai-365/README.md) |
+
+Choose the package for the system you are actually using. A similar X++ name does not make guidance from another generation interchangeable.
+
+## Install from this repository
+
+Node.js 18 or newer is required. Clone the repository, then run **one** install command from its root for the version you need:
+
+```powershell
+git clone https://github.com/betaxD90/xppai.git
+cd xppai
+```
+
+| System | Install skills for Codex |
 | --- | --- |
-| **Microsoft Dynamics AX 2009** | This root package: legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
-| **Microsoft Dynamics AX 2012 R3** | [xppai-ax2012](packages/xppai-ax2012/README.md): AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
-| **Dynamics 365 Finance and Supply Chain Management (D365FO)** | [xppai-365](packages/xppai-365/README.md): D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
+| AX 2009 | `node .\bin\xppai.js install --target codex` |
+| AX 2012 R3 | `node .\packages\xppai-ax2012\bin\xppai-ax2012.js install --target codex` |
+| D365FO | `node .\packages\xppai-365\bin\xppai-365.js install --target codex` |
 
-Each package has its own skills, CLI, and installation. Pick the version of the system you are actually working on; a familiar X++ name does not make guidance from another generation safe to reuse.
-
-## What each version actually does
-
-- **AX 2009** helps untangle older X++ systems: explain an unfamiliar object, trace a posting or support problem, read a profiler result, review a proposed fix, or inspect an XPO. This is the package documented below.
-- **AX 2012 R3** works with R3 X++ and XPO evidence to explain existing behavior, plan or review changes, assess risk, and organize local project notes. Its separate CLI can load and compare XPO revisions. [Read the AX 2012 guide](packages/xppai-ax2012/README.md).
-- **D365FO** works from readable X++, metadata, diffs, errors, traces, and requirements. It helps explain current code, choose an extension approach, assess risk, and draft a fix or new behavior. [Read the D365FO guide](packages/xppai-365/README.md).
-
-Each guide explains what evidence its version needs and what must still be checked in the target environment.
-
-## Meet `xppai-papai`
-
-For AX 2009, **Papai is the lead**. Hand it a method, class, form, XPO, stack trace, posting puzzle, or support symptom and tell it what you need. It works out what matters, picks the smallest useful sequence of specialist skills, checks the evidence, and turns the findings into a practical answer. It can move from a vague business symptom to `xppai-support`, then to `xppai-posting` or `xppai-explain` when the code arrives, without making you guess the route up front.
-
-That is why Papai is the one to call when the request is messy: it **connects the specialists and judges when to stop**. It is not a magic AX connection. The assistant still needs the relevant code or evidence, and only the AX environment can confirm compile and runtime behavior. For a narrow question, you can call a specialist directly. For a fixed, repeatable analysis of an artifact, `xppai-babysit` is also available.
-
-> **Try it:** “Use `xppai-papai` to investigate this AX 2009 posting error. Here is the message and the relevant X++ method; explain the likely cause and the next check.”
-
-## The AX 2009 crew
-
-| Skill | What it does |
-| --- | --- |
-| `xppai-papai` | Leads mixed or unclear work and combines the right specialist findings. |
-| `xppai-babysit` | Runs a predefined, structured analysis based on the artifact type. |
-| `xppai-explain` | Explains unfamiliar methods, classes, forms, and tables. |
-| `xppai-support` | Investigates business or support symptoms before the code path is known. |
-| `xppai-stack` | Reads stack and profiler traces to investigate performance. |
-| `xppai-posting` | Follows FormLetter posting flows, sequencing, and side effects. |
-| `xppai-architect` | Reviews responsibilities, coupling, and design boundaries. |
-| `xppai-risk` | Assesses the impact of a proposed change. |
-| `xppai-codefix` | Proposes a focused fix once the defect and context are understood. |
-| `xppai-exportxpo` | Prepares a ready-to-paste X++ job to export selected AOT objects. |
-| `xppai-core` | Supplies AX 2009 rules and evidence labels used throughout the suite. |
-| `xppai-domain` | Adds deeper posting, performance, and architecture knowledge. |
-| `xppai-intake` | Reads XPO evidence once when an XPO is supplied. |
-| `xppai-help` | Lists the skills and helps you choose one. |
-| `xppai-init` | Legacy compatibility entry; use `core`, `domain`, and `intake` as applicable. |
-
-The [skills guide](docs/skills.md) has more detailed routing examples. The suite guides an AI assistant; it does not run AX, compile X++, or prove a proposed change in production.
-
-## Install and get started
-
-### Requirements
-
-- Node.js 18 or newer.
-- A supported assistant runtime for installing the skills. The CLI also supports export for manual use.
-
-### Install from a repository checkout
-
-From the repository root:
-
-```bash
-npm install -g .
-xppai list
-xppai install --target codex
-```
-
-Choose `claude`, `qwen`, or `copilot` instead of `codex` to install to that target. `copilot` writes project skills under `.github/skills` in the current repository, so run that command from the project where you want the skills installed. To install all native targets, use `xppai install --target all`.
-
-To export the assets for manual use instead of installing them:
-
-```bash
-xppai export --target generic --out ./out/skills
-```
-
-### Optional XPO command-line workflow
-
-The CLI can load a local XPO into its cache and query its objects. For cache-based queries, take a snapshot before listing, reading, or searching:
-
-```bash
-xppai xpo load "./path/to/export.xpo"
-xppai xpo snapshot --json
-xppai xpo list --type Class
-xppai xpo read --type Class --name MyClass
-xppai xpo grep --contains "search text"
-```
-
-For ordinary skill analysis, the cache workflow is optional: provide the XPO file to your assistant directly when the runtime can read local files, or paste its contents.
-
-## AX 2009 documentation
-
-- [Skills guide](docs/skills.md)
-- [CLI reference](docs/cli.md)
-- [XPO cache workflow](docs/xpo-cache.md)
-- [Targets and installation](docs/targets.md)
-- [Scope and constraints](docs/scope.md)
-- [Documentation index](docs/README.md)
+The package guides explain other assistant targets, global installation, export, and package-specific CLI commands. After installing, give your assistant the relevant evidence and describe the result you want. Start with that version's Papai when the request spans explanation, design, risk, and implementation.
 
 ## About
 

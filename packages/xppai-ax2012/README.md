@@ -6,7 +6,7 @@
 
 | Your system | Package and scope |
 | --- | --- |
-| **Microsoft Dynamics AX 2009** | [xppai](../../README.md): legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
+| **Microsoft Dynamics AX 2009** | [xppai AX 2009](../../docs/ax2009.md): legacy X++ analysis, support and posting investigations, change review, and XPO inspection. |
 | **Microsoft Dynamics AX 2012 R3** | This package: AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
 | **Dynamics 365 Finance and Supply Chain Management (D365FO)** | [xppai-365](../xppai-365/README.md): D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
 
