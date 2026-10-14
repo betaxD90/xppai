@@ -42,7 +42,7 @@ The reference packs cover Visual Studio and metadata, extensibility, X++ transac
 
 ## Quick start
 
-After its first npm release, Node.js 18 or newer can install the Codex skills with one command:
+Node.js 18 or newer can install the Codex skills with one command:
 
 ```powershell
 npx --yes xppai-365@latest install --target codex
@@ -83,4 +83,4 @@ After installing or exporting, give your assistant the relevant source and ask f
 - [Response evaluation](docs/response-evaluation.md)
 - [Repository overview and product comparison](../../README.md)
 
-The package requires Node.js 18 or newer. Its local package metadata defines the CLI and validation scripts; these commands do not imply that the package is published to npm.
+The npm package is named `xppai-365`; its CLI command uses the same name.

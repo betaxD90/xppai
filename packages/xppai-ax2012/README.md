@@ -47,17 +47,17 @@ Parsed source or XPO supports static analysis, not proof of what runs in AX. Lay
 
 ## Install and start
 
-Node.js 18 or newer is required. If your configured npm registry has this package, install it globally:
+Node.js 18 or newer is required. Install the Codex skills with one command:
+
+```powershell
+npx --yes xppai-ax2012@latest install --target codex
+```
+
+To keep the CLI available globally, install it with:
 
 ```powershell
 npm install -g xppai-ax2012
 xppai-ax2012 install --target codex
-```
-
-After its first npm release, a one-command install without a global CLI is also available:
-
-```powershell
-npx --yes xppai-ax2012@latest install --target codex
 ```
 
 Install for a different supported runtime by replacing `codex` with `claude`, `qwen`, or `copilot`. `generic` is available for export only. The CLI also supports copying or symlinking assets and exporting them to a chosen directory.

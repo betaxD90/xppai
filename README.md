@@ -26,15 +26,15 @@ Choose the package for the system you are actually using. A similar X++ name doe
 
 ## Install from npm
 
-Node.js 18 or newer is required. Once each package has been published, install its guidance for Codex with one command:
+Node.js 18 or newer is required. Install the guidance for your version in Codex with one command:
 
 | System | Command |
 | --- | --- |
-| AX 2009 | `npx --yes xppai@latest install --target codex` |
+| AX 2009 | `npx --yes xppai-2009@latest install --target codex` |
 | AX 2012 R3 | `npx --yes xppai-ax2012@latest install --target codex` |
 | D365FO | `npx --yes xppai-365@latest install --target codex` |
 
-The first run downloads the package from npm. Each command copies that version's skills into Codex; repeat it to install a newer published version. AX 2012 and D365FO need their first npm release before their commands work. The published AX 2009 version may lag behind this repository.
+The first run downloads the package from npm. Each command copies that version's skills into Codex; repeat it to install a newer published version. The AX 2009 npm package is named `xppai-2009`; the repository and CLI remain `xppai`.
 
 ## Install from this repository
 

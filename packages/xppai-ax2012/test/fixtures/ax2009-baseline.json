@@ -5,13 +5,13 @@
     "gitRevision": "working-tree"
   },
   "package": {
-    "name": "xppai",
+    "name": "xppai-2009",
     "version": "1.0.24",
     "testCount": 63,
     "entryCount": 66,
-    "packedSize": 27568,
-    "unpackedSize": 90771,
-    "shasum": "15dc5a8d8aa0748fc217342f43d0087d7e1fc4d5"
+    "packedSize": 27569,
+    "unpackedSize": 90920,
+    "shasum": "df7a26f6a370d399996cbf85d5c3f64ea4fbc44a"
   },
   "packageFiles": [
     "LICENSE",

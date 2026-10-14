@@ -24,7 +24,7 @@ function mappingKeysByIndent(text, parentName) {
 test('publication scripts are sibling-local and preserve the root package', () => {
   const rootPkg = require('../../../../package.json');
   const pkg = require('../../package.json');
-  assert.equal(rootPkg.name, 'xppai');
+  assert.equal(rootPkg.name, 'xppai-2009');
   assert.equal(pkg.name, 'xppai-ax2012');
   assert.equal(
     pkg.scripts.prepublishOnly,
