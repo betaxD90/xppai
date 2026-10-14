@@ -63,6 +63,7 @@ test('AX 2012 exports only its versioned product identity and skill namespace', 
     'xppai-ax2012-codefix',
     'xppai-ax2012-dev',
     'xppai-ax2012-ririchard',
+    'xppai-ax2012-project',
     'xppai-ax2012-help',
   ]);
   assert.equal(Object.isFrozen(PRODUCT_IDENTITY), true);

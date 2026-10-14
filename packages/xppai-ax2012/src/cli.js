@@ -1,6 +1,6 @@
 'use strict';
 
-const TOP_LEVEL_COMMANDS = Object.freeze(['list', 'path', 'install', 'export', 'xpo']);
+const TOP_LEVEL_COMMANDS = Object.freeze(['list', 'path', 'install', 'export', 'xpo', 'project']);
 
 function parseArgs(argv) {
   const flags = {};
@@ -59,6 +59,7 @@ async function run(argv = process.argv) {
     install: require('./commands/install'),
     export: require('./commands/export'),
     xpo: require('./commands/xpo'),
+    project: require('./commands/project'),
   };
   const handler = handlers[command];
   if (!handler) throw new Error(`unknown command "${command}"; expected ${TOP_LEVEL_COMMANDS.join(', ')}`);
