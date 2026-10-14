@@ -5,11 +5,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/betaxD/xppai.git"
+    "url": "git+https://github.com/betaxD90/xppai.git"
   },
-  "homepage": "https://github.com/betaxD/xppai#readme",
+  "homepage": "https://github.com/betaxD90/xppai#readme",
   "bugs": {
-    "url": "https://github.com/betaxD/xppai/issues"
+    "url": "https://github.com/betaxD90/xppai/issues"
   },
   "keywords": [
     "xpp",

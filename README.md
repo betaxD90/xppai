@@ -111,7 +111,7 @@ For `copilot`, install writes GitHub Copilot CLI project skills under `.github/s
 
 ## Repository
 
-GitHub: [betaxD/xppai](https://github.com/betaxD/xppai)
+GitHub: [betaxD90/xppai](https://github.com/betaxD90/xppai)
 
 ## Status
 

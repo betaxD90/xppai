@@ -9,9 +9,9 @@
     "version": "1.0.24",
     "testCount": 63,
     "entryCount": 64,
-    "packedSize": 25073,
-    "unpackedSize": 84467,
-    "shasum": "dee5d83f10ecf285dc05fbbadc5a3bb5aecc7a4c"
+    "packedSize": 25072,
+    "unpackedSize": 84477,
+    "shasum": "109092b2091ba19188a08b8c057dd0cf506ab1f3"
   },
   "packageFiles": [
     "README.md",
