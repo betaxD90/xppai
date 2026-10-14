@@ -24,7 +24,8 @@ test('AX 2012 tarball contains only sibling-owned package files', () => {
   for (const ref of manifest.references) {
     assert(files.includes(`package/assets/references/${ref.path}`), `missing packaged reference: ${ref.id}`);
   }
-  assert(files.every((file) => /^(?:package\/(?:assets|bin|docs|src)\/|package\/(?:package\.json|README\.md)$)/.test(file)));
+  assert(files.includes('package/LICENSE'));
+  assert(files.every((file) => /^(?:package\/(?:assets|bin|docs|src)\/|package\/(?:package\.json|README\.md|LICENSE)$)/.test(file)));
 });
 
 test('installed tarball passes its CLI and target smoke tests', () => {

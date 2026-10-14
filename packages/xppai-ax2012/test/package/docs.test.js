@@ -19,7 +19,7 @@ test('README documents independent install and side-by-side safety', () => {
 
   assert.match(readme, /npm install -g xppai-ax2012/);
   assert.match(readme, /xppai-ax2012 install --target codex/);
-  assert.match(readme, /side-by-side with xppai@1\.0\.24/i);
+  assert.match(readme, /side-by-side with xppai/i);
   assert.match(readme, /AX 2012 R3/);
   assert.match(readme, /does not provide[\s\S]*AX 2009[\s\S]*D365/i);
   for (const target of ['claude', 'codex', 'qwen', 'copilot', 'generic']) assert.match(readme, new RegExp(`\\b${target}\\b`));

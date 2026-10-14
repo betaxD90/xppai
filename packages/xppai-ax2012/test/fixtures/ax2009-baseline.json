@@ -8,12 +8,13 @@
     "name": "xppai",
     "version": "1.0.24",
     "testCount": 63,
-    "entryCount": 64,
-    "packedSize": 25330,
-    "unpackedSize": 84866,
-    "shasum": "0bf64ac686b8102885cc23591f5dd2ac62249ed1"
+    "entryCount": 66,
+    "packedSize": 27568,
+    "unpackedSize": 90771,
+    "shasum": "15dc5a8d8aa0748fc217342f43d0087d7e1fc4d5"
   },
   "packageFiles": [
+    "LICENSE",
     "README.md",
     "assets/agents/xppai-papai/AGENT.md",
     "assets/commands/xppai-architect.md",
@@ -43,6 +44,7 @@
     "assets/skills/xppai-stack/SKILL.md",
     "assets/skills/xppai-support/SKILL.md",
     "bin/xppai.js",
+    "docs/ax2009.md",
     "docs/cli.md",
     "docs/README.md",
     "docs/scope.md",

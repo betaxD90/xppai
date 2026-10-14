@@ -3,6 +3,15 @@
   "version": "0.1.0",
   "description": "Evidence-driven D365FO X++ skill suite and CLI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betaxD90/xppai.git",
+    "directory": "packages/xppai-365"
+  },
+  "homepage": "https://github.com/betaxD90/xppai/tree/main/packages/xppai-365#readme",
+  "bugs": {
+    "url": "https://github.com/betaxD90/xppai/issues"
+  },
   "type": "commonjs",
   "bin": {
     "xppai-365": "bin/xppai-365.js"

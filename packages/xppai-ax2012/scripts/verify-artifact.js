@@ -11,7 +11,7 @@ const { PUBLIC_SKILLS } = require('../src/constants');
 const { loadReferenceManifest } = require('../src/skills/manifest');
 
 const PACKAGE_ROOT = path.resolve(__dirname, '..');
-const ALLOWED_FILE = /^(?:package\/(?:assets|bin|docs|src)\/|package\/(?:package\.json|README\.md)$)/;
+const ALLOWED_FILE = /^(?:package\/(?:assets|bin|docs|src)\/|package\/(?:package\.json|README\.md|LICENSE)$)/;
 
 function run(command, args, cwd, env = process.env) {
   const result = spawnSync(command, args, { cwd, encoding: 'utf8', env });
@@ -42,7 +42,7 @@ function packDryRun(packageRoot = PACKAGE_ROOT) {
 function verifyFileContract(packageRoot, files) {
   assert(files.every((file) => ALLOWED_FILE.test(file.path)), 'unexpected tarball file');
   const paths = new Set(files.map((file) => file.path));
-  for (const required of ['package/package.json', 'package/README.md', 'package/bin/xppai-ax2012.js', 'package/src/cli.js']) {
+  for (const required of ['package/package.json', 'package/README.md', 'package/LICENSE', 'package/bin/xppai-ax2012.js', 'package/src/cli.js']) {
     assert(paths.has(required), `missing required artifact file: ${required}`);
   }
   for (const name of PUBLIC_SKILLS) {

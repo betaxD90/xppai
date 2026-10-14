@@ -42,6 +42,12 @@ The reference packs cover Visual Studio and metadata, extensibility, X++ transac
 
 ## Quick start
 
+After its first npm release, Node.js 18 or newer can install the Codex skills with one command:
+
+```powershell
+npx --yes xppai-365@latest install --target codex
+```
+
 From this package directory, list the bundled skills and install them for one supported assistant:
 
 ```powershell

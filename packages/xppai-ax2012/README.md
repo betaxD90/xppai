@@ -10,7 +10,7 @@
 | **Microsoft Dynamics AX 2012 R3** | This package: AX 2012 R3 analysis, change guidance, project notes, and XPO tooling. |
 | **Dynamics 365 Finance and Supply Chain Management (D365FO)** | [xppai-365](../xppai-365/README.md): D365FO X++ and readable metadata, diffs, diagnostics, and requirements. |
 
-Each package has its own skills, CLI, and installation. This one has its own XPO cache and install manifests too. Keep the evidence and guidance tied to the version you actually use.
+Each package has its own skills, CLI, and installation. This one has its own XPO cache and install manifests too. It installs side-by-side with xppai for AX 2009. This package does not provide AX 2009 or D365 guidance. Keep the evidence and guidance tied to the version you actually use.
 
 ## What this AX 2012 package does
 
@@ -52,6 +52,12 @@ Node.js 18 or newer is required. If your configured npm registry has this packag
 ```powershell
 npm install -g xppai-ax2012
 xppai-ax2012 install --target codex
+```
+
+After its first npm release, a one-command install without a global CLI is also available:
+
+```powershell
+npx --yes xppai-ax2012@latest install --target codex
 ```
 
 Install for a different supported runtime by replacing `codex` with `claude`, `qwen`, or `copilot`. `generic` is available for export only. The CLI also supports copying or symlinking assets and exporting them to a chosen directory.

@@ -3,6 +3,15 @@
   "version": "0.2.0",
   "description": "Independent Microsoft Dynamics AX 2012 R3 skill suite and CLI",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/betaxD90/xppai.git",
+    "directory": "packages/xppai-ax2012"
+  },
+  "homepage": "https://github.com/betaxD90/xppai/tree/main/packages/xppai-ax2012#readme",
+  "bugs": {
+    "url": "https://github.com/betaxD90/xppai/issues"
+  },
   "type": "commonjs",
   "bin": {
     "xppai-ax2012": "bin/xppai-ax2012.js"
