@@ -37,4 +37,3 @@ test('all source-tree reference paths resolve and seven command wrappers target 
   assert.equal(commands.length, 7);
   for (const file of commands) assert.ok(expected.includes(path.basename(file, '.md')));
 });
-

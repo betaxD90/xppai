@@ -11,4 +11,3 @@ Missing/conflicting base declarations require clarification or explicitly condit
 Sources: [Extensibility](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/extensibility-home-page), [CoC](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/extensibility/method-wrapping-coc).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

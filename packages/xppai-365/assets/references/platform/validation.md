@@ -9,4 +9,3 @@ Source snippets, XML, .axpp project transfers, and deployable packages are diffe
 Source: [Testing and validation](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/perf-test/testing-validation), [Projects](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-tools/projects).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

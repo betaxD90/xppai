@@ -14,4 +14,3 @@ Assess the proposed delta against the supplied baseline. Prioritize business imp
 For each material risk, state the trigger, effect, supporting code/metadata location, and a focused mitigation or test. Distinguish observed defects from hypothetical risks and unknown configuration. Do not assign numerical certainty without a defined basis.
 
 Keep static review, package checks, and D365FO execution evidence separate. A build log proves only its own build/context. If deployment matters, identify the necessary target-specific verification; do not assume one topology or ask for credentials. Avoid generic checklists for risks unrelated to the change.
-

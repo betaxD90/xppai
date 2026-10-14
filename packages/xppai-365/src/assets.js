@@ -8,4 +8,3 @@ module.exports = {
   commandsPath: () => path.join(root(), 'commands'),
   list: () => validateSkillContracts(path.resolve(__dirname, '..')),
 };
-

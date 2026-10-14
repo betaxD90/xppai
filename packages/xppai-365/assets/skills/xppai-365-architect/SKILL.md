@@ -16,4 +16,3 @@ Check the supplied owning object, exact method signature, visibility/extensibili
 Explain responsibilities, required elements/properties, and the Visual Studio application point. For a sealed or unavailable hook, state the limit and a supported alternative or extensibility request rather than recommending overlayering standard code.
 
 Treat integration mechanisms, batch, and security as source/contract design topics. Do not create connectors, environment setup, or deployment infrastructure. Business API names require target evidence; AX 2012 familiarity is not validation.
-

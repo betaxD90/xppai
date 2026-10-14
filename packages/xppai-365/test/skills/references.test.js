@@ -32,4 +32,3 @@ for (const kind of ['missing', 'duplicate', 'foreign', 'traversal', 'absolute', 
     assert.deepEqual(fs.readFileSync(file), before);
   });
 }
-

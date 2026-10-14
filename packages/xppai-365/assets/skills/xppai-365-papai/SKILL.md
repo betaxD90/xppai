@@ -23,4 +23,3 @@ Use when a request mixes explanation, design, risk, and implementation. A single
 Apply core, normalize intake once if needed, select only relevant manifest domains, and use the minimum specialist sequence. This is instruction routing within the assistant, not a mandate to spawn agents or invoke another model. Do not loop through every specialist, reread the same source, or produce a fixed multi-section report.
 
 Ask one focused question only if evidence blocks the next action; otherwise proceed with qualified assumptions. Synthesize findings with source locations and useful code first. Stop speculation when the needed evidence is absent and name that evidence. Never turn repeated investigation into a claim of certainty.
-

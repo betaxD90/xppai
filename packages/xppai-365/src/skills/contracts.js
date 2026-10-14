@@ -18,4 +18,3 @@ function validateSkillContracts(root) {
   return names;
 }
 module.exports = { validateSkillContracts };
-

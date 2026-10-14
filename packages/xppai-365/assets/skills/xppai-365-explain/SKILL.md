@@ -16,4 +16,3 @@ Reference the exact method or property involved. Distinguish base behavior, CoC 
 For XML explain visible metadata and embedded source; a referenced element whose source is missing remains unknown. For errors explain supported causes without promoting a hypothesis to confirmed root cause.
 
 Return a concise explanation in the user's language. Include a small example only if it clarifies behavior. Do not rewrite code unless requested; if a defect matters, identify it and its effect without inventing a full project.
-

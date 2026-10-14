@@ -9,4 +9,3 @@ When relying on the framework's transient handling, preserve TransientSqlConnect
 Sources: [Batch retries](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/sysadmin/retryable-batch), [Exception handling](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-exceptions).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

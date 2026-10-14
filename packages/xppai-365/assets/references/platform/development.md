@@ -7,4 +7,3 @@ Identify element and method/property before returning source or designer instruc
 Sources: [Models](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-tools/models), [Projects](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-tools/projects), [XML and source control](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-tools/version-control-metadata-navigation), [Unified tools](https://learn.microsoft.com/en-us/power-platform/developer/unified-experience/finance-operations-install-config-tools).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

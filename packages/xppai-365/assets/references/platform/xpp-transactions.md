@@ -11,4 +11,3 @@ Infer no index, relation, query result, or performance gain without evidence. Re
 Sources: [Language](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-language-reference), [Transactions](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-data/xpp-transaction), [Exceptions](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/dev-ref/xpp-exceptions).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

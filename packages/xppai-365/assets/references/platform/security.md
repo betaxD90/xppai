@@ -7,4 +7,3 @@ Review supplied security metadata only where it affects the change. Identify req
 Source: [Security architecture](https://learn.microsoft.com/en-us/dynamics365/fin-ops-core/dev-itpro/sysadmin/security-architecture).
 
 Reviewed: 2026-10-14. Platform documentation is not proof of the customer's installed build or runtime state.
-

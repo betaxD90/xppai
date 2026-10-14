@@ -18,4 +18,3 @@ CLI: list and path inspect bundled skills; install --target <claude|codex|qwen|c
 Output can be an explanation, full method/class, diff, or metadata application instructions. A snippet is not a deployment package. Binary archive parsing and XPO/cache commands are not supplied. Runtime compilation, synchronization, deployment, and execution remain the user's environment checks.
 
 Do not describe unimplemented features or excluded compliance specialists as available.
-

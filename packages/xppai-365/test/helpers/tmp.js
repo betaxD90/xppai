@@ -8,4 +8,3 @@ function useTempDir(t, prefix = 'xppai-365-test-') {
   return root;
 }
 module.exports = { useTempDir };
-

@@ -16,4 +16,3 @@ Choose supported D365FO extension mechanisms. Return a complete custom class/ext
 Preserve standard framework behavior, company and transaction ownership, security, localization, and extension semantics. Create only elements required by the feature. Specify the model dependency when supported, and identify the Application Explorer element, metadata properties, and Visual Studio location where the user applies the result.
 
 Provide focused acceptance checks; proposed SysTest code is not an executed test. Do not emit an entire solution, binary package, installer, or environment connection for a code request. Keep explanation and code lean.
-

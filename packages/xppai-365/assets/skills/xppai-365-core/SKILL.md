@@ -35,4 +35,3 @@ Use English technical identifiers and follow the user's language for explanation
 Binary project/model/deployment archives have no parsing or round-trip guarantee. Request readable source when necessary. Legacy artifacts are migration evidence only when explicitly requested. Do not produce environment-wide conclusions from a snippet. Financial posting, inventory, dimensions, localization, workflow, and reporting require relevant application evidence.
 
 Do not generate plans, reports, scaffolding, or extra files for an ordinary code question unless requested or necessary for the requested artifact. Do not automatically delegate to agents. A local package test cannot prove X++ compilation or D365FO execution.
-
