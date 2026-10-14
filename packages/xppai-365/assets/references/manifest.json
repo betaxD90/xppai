@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "baseline": "D365FO",
+  "references": [
+    {
+      "id": "platform.development",
+      "path": "platform/development.md",
+      "baseline": "D365FO",
+      "domains": [
+        "visual-studio",
+        "models",
+        "metadata",
+        "artifacts"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.extensibility",
+      "path": "platform/extensibility.md",
+      "baseline": "D365FO",
+      "domains": [
+        "extensions",
+        "coc",
+        "forms",
+        "events"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.xpp-transactions",
+      "path": "platform/xpp-transactions.md",
+      "baseline": "D365FO",
+      "domains": [
+        "xpp",
+        "transactions",
+        "exceptions",
+        "company",
+        "queries"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.data-integration",
+      "path": "platform/data-integration.md",
+      "baseline": "D365FO",
+      "domains": [
+        "data-model",
+        "enums",
+        "entities",
+        "odata",
+        "integration",
+        "services"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.batch",
+      "path": "platform/batch.md",
+      "baseline": "D365FO",
+      "domains": [
+        "batch",
+        "sysoperation",
+        "retry",
+        "idempotence"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.security",
+      "path": "platform/security.md",
+      "baseline": "D365FO",
+      "domains": [
+        "security",
+        "identity",
+        "xds",
+        "permissions"
+      ],
+      "status": "supported"
+    },
+    {
+      "id": "platform.validation",
+      "path": "platform/validation.md",
+      "baseline": "D365FO",
+      "domains": [
+        "build",
+        "tests",
+        "deployment",
+        "synchronization"
+      ],
+      "status": "supported"
+    }
+  ]
+}

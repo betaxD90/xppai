@@ -1,0 +1,26 @@
+{
+  "name": "xppai-365",
+  "version": "0.1.0",
+  "description": "Evidence-driven D365FO X++ skill suite and CLI",
+  "license": "MIT",
+  "type": "commonjs",
+  "bin": {
+    "xppai-365": "bin/xppai-365.js"
+  },
+  "files": [
+    "assets/",
+    "bin/",
+    "src/",
+    "docs/",
+    "scripts/"
+  ],
+  "scripts": {
+    "test": "node --test",
+    "verify:artifact": "node scripts/verify-artifact.js",
+    "prepack": "npm test",
+    "prepublishOnly": "npm test && npm run verify:artifact"
+  },
+  "engines": {
+    "node": ">=18"
+  }
+}
